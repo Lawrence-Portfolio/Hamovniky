@@ -1,0 +1,129 @@
+<header>
+   <div id="top-strip">
+      <div class="container">
+         <div class="strip-wrap">
+            {% if this.theme.contacts.email %}<a href="mailto:{{ this.theme.contacts.email }}" class="email-info">{{ this.theme.contacts.email }}</a>{% endif %}
+            <div id="headerFavorites">
+                {% partial 'element/favorites/headerFavorites' count=Favorites.favoritesID|length %}
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="header">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col-xl-4 col-lg-3 logo-section">
+               <a href="/">
+                  <img class="img-fluid" src="{{ 'assets/images/svg/logo.svg'|theme }}" alt="Агенство недвиижмости «Хамовники»">
+               </a>           
+            </div>
+            <div class="col-xl-8 col-lg-9 content-section">
+               <div class="header-wrap">
+                  <div class="header-info-wrap">
+                      {% if this.theme.contacts.address %}<span class="info-item address">{{ this.theme.contacts.address }}</span>{% endif %}
+                      {% if this.theme.contacts.worktime %}<span class="info-item clock">{{ this.theme.contacts.worktime }}</span>{% endif %}
+                  </div>
+                  <div class="header-info-wrap">
+                     {% if this.theme.contacts.phone %}<a href="tel:{{ this.theme.contacts.phone }}" class="info-item phone">{{ this.theme.contacts.phone }}</a>{% endif %}
+                     <div class="socials">
+                         {% if this.theme.contacts.viber %}<a class="social-link" href="viber://chat?number={{ this.theme.contacts.viber }}"><i class="fab fa-viber"></i></a>{% endif %}
+                         {% if this.theme.contacts.whatsapp %}<a class="social-link" href="https://wa.me/{{ this.theme.contacts.whatsapp }}"><i class="fab fa-whatsapp"></i></a>{% endif %}
+                         {% if this.theme.contacts.telegram %}<a class="social-link" href="http://t.me/{{ this.theme.contacts.telegram }}"><i class="fab fa-telegram"></i></a>{% endif %}
+                     </div>
+                  </div>
+                  <button class="btn btn-grey custom-btn-xl" type="button" data-toggle="modal" data-target="#request-call">Заказать звонок</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="nav-section">
+      <div class="container">
+         <div class="nav-section-wrap">
+            <nav class="navbar navbar-expand-lg">
+               <button class="burger btn" type="button" data-toggle="collapse" data-target="#header-nav" aria-controls="header-nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="far fa-bars"></i>
+               </button>
+               <div class="collapse navbar-collapse" id="header-nav">
+                  <ul class="nav-list">
+                     <li class="nav-item">
+                        <a href="/" class="nav-link">Главная</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="{{ 'info/about-us'|page }}" class="nav-link">Об агентстве</a>
+                     </li>
+                     <li class="nav-item dropdown">
+                        <a href="{{ 'property/listing'|page }}" class="nav-link" id="dropdownProperty" aria-haspopup="true" aria-expanded="false">Недвижимость</a>
+                        <div class="dropdown-menu dropdown-nav" aria-labelledby="dropdownProperty">
+                           <ul class="dropdown-nav-list">
+                               <li class="category-name">Продажа</li>
+                               {% set sailLinks = [
+                                   { title: 'Квартиры и комнаты', url: 'property/listing-urban-sale' },
+                                   { title: 'Загородная недвижимость', url: 'property/listing-suburban-sale' },
+                                   { title: 'Коммерческая недвижимость', url: 'property/listing-commercial-sale' }
+                               ] %}
+                               {% for item in sailLinks %}
+                                   <li class="dropdown-nav-item">
+                                       <a class="dropdown-nav-link" href="{{ item.url|page }}">{{ item.title }}</a>
+                                   </li>
+                               {% endfor %}
+                           </ul>
+                           <ul class="dropdown-nav-list">
+                               <li class="category-name">Аренда</li>
+                               {% set rentLinks = [
+                                   { title: 'Квартиры и комнаты', url: 'property/listing-urban' },
+                                   { title: 'Загородная недвижимость', url: 'property/listing-suburban' },
+                                   { title: 'Коммерческая недвижимость', url: 'property/listing-commercial' }
+                               ] %}
+                               {% for item in rentLinks %}
+                                   <li class="dropdown-nav-item">
+                                       <a class="dropdown-nav-link" href="{{ item.url|page }}">{{ item.title }}</a>
+                                   </li>
+                               {% endfor %}
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-item dropdown">
+                        <a href="{{ 'services/listing'|page }}" class="nav-link" id="dropdownServices" aria-haspopup="true" aria-expanded="false">Услуги</a>
+                        <div class="dropdown-menu dropdown-nav" aria-labelledby="dropdownServices">
+                           <ul class="dropdown-nav-list services">
+                              {% for item in ServiceCatalog.services %}
+                              <li class="dropdown-nav-item">
+                                 <a class="dropdown-nav-link" href="{{ 'services/listing'|page }}/{{ item.slug }}">{{ item.name }}</a>
+                              </li>
+                              {% endfor %}
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-item">
+                        <a href="{{ 'articles/listing'|page }}" class="nav-link">Статьи</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="{{ 'typical/typical'|page }}" class="nav-link">Район Хамовники</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="{{ 'info/contacts'|page }}" class="nav-link">Контакты</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+            <div class="socials">
+                {% if this.theme.contacts.vk %}<a class="social-link" href="{{ this.theme.contacts.vk }}" style="position: relative; top: 1px;"><i class="fab fa-vk"></i></a>{% endif %}
+                {% if this.theme.contacts.tiktok %}
+                    <a class="social-link" href="{{ this.theme.contacts.tiktok }}">
+                        <picture><img style="width: 18px; height: 18px; position: relative; top: -1px;" src="{{ 'assets/images/svg/tik-tok.svg'|theme }}" alt="Tik-Tok"></picture>
+                    </a>
+                {% endif %}
+                {% if this.theme.contacts.dzen %}
+                    <a class="social-link" href="{{ this.theme.contacts.dzen }}">
+                        <picture><img style="width: 18px; height: 18px; position: relative; top: -1px;" src="{{ 'assets/images/svg/dzen.svg'|theme }}" alt="Zen"></picture>
+                    </a>
+                {% endif %}
+               {% if this.theme.contacts.twitter %}<a class="social-link" href="{{ this.theme.contacts.twitter }}"><i class="fab fa-twitter"></i></a>{% endif %}
+               {% if this.theme.contacts.facebook %}<a class="social-link" href="{{ this.theme.contacts.facebook }}"><i class="fab fa-facebook-square"></i></a>{% endif %}
+               {% if this.theme.contacts.instagram %}<a class="social-link" href="{{ this.theme.contacts.instagram }}"><i class="fab fa-instagram"></i></a>{% endif %}
+            </div>
+         </div>
+      </div>
+   </div>
+</header>

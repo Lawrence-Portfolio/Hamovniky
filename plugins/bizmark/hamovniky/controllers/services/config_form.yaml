@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Услуга
+
+# Model Form Field configuration
+form: $/bizmark/hamovniky/models/service/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Hamovniky\Models\Service
+
+# Default redirect location
+defaultRedirect: bizmark/hamovniky/services
+
+# Create page
+create:
+    title: Создание услуги
+    redirect: bizmark/hamovniky/services/update/:id
+    redirectClose: bizmark/hamovniky/services
+
+# Update page
+update:
+    title: Редактирование услуги
+    redirect: bizmark/hamovniky/services
+    redirectClose: bizmark/hamovniky/services
+
+# Preview page
+preview:
+    title: Preview Service

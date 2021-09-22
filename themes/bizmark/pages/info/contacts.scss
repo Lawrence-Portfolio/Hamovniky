@@ -1,0 +1,73 @@
+@import '../../build/scss/color.scss';
+
+@import '../../partials/feedback-form-2/feedback-form-2.scss';
+
+.contacts-page {
+   padding-bottom: 0;
+}
+.contact-img {
+   margin-bottom: 60px;
+}
+.contacts {
+   padding-bottom: 100px;
+}
+.contact-wrap {
+   margin-bottom: 40px;
+   .contact-title {
+      margin-bottom: 20px;
+      font-size: 18px;
+   }
+   .contact-info {
+      font-weight: 300;
+   }
+   .contact-item {
+      margin-right: 25px;
+      i {
+         font-size: 15px;
+         margin-right: 10px;
+      }
+   }
+   .sotial-links {
+      display: flex;
+      .link {
+         font-size: 20px;
+         display: block;
+         margin-right: 10px;
+         transition: all .1s ease-in-out;
+         &:hover {
+            transform: scale(1.1);
+         }
+      }
+   }
+}
+
+@media(max-width: 991px) {
+   .contacts {
+      padding-bottom: 60px;
+   }
+   .contact-wrap {
+      font-size: 15px;
+      .contact-title {
+         margin-bottom: 10px;
+      }
+      .contact-item  {
+         display: flex;
+         align-items: center;
+         margin-bottom: 5px;
+         margin-right: 0;
+      }
+  }
+}
+
+@media(max-width: 767px) {
+   .contacts {
+      padding-bottom: 40px;
+   }
+   .contact-img {
+      margin-bottom: 30px;
+   }
+   .contact-wrap {
+      margin-bottom: 20px;
+   }
+} 
+

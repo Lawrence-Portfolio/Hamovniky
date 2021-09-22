@@ -1,0 +1,21 @@
+.btn-like {
+   padding: 0;
+   width: 36px;
+   height: 36px;
+   color: #C9C8C9;
+   border: none;
+   border-radius: 8px;
+   background-color: #fff;
+   &:hover {
+      color: #C9C8C9;
+   }
+   &:focus {
+      box-shadow: none;
+   }
+}
+.btn-like.active {
+   color: $btn_blue;
+   &:hover {
+      color: $btn_blue;
+   }
+}

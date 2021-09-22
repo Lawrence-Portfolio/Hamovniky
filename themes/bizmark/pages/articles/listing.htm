@@ -1,0 +1,70 @@
+title = "Статьи и новости"
+url = "/articles"
+layout = "default"
+is_hidden = 0
+==
+<?php
+function onAjax() {
+    return true;
+}
+
+function onStart() {
+   $this['path_page_css'] = mix('css/articles-listing.css', 'themes/bizmark/assets');
+   $this['path_page_js'] = mix('js/articles-listing.js', 'themes/bizmark/assets');
+}
+
+function onInit() {
+    $this['Categories'] = \RainLab\Blog\Models\Category::all();
+    $posts = \RainLab\Blog\Models\Post::query();
+    $filter = input('filter');
+
+    if (!empty($filter) && $filter !== 'all') {
+        $posts = $posts->whereHas('categories', function ($query) use ($filter) {
+            $query->where('slug', $filter);
+        });
+    }
+
+    $this['Filter'] = $filter;
+    $this['Posts'] = $posts->get();
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page listing-page"
+{% endput %}
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+<div class="container">
+   {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+</div>
+<section id="articles-listing">
+   <div class="container">
+      <div class="headline-wrapper page-title">
+         <h1 class="h1 page-title">Статьи и новости</h1>
+         <form class="articles-filter-form">
+            <div class="form-check">
+               <input class="custom-control-input" type="radio" name="filter" id="filter-all" value="all">
+               <label class="custom-control-label" for="filter-all">Все</label>
+            </div>
+             {% for Category in Categories %}
+                 <div class="form-check">
+                     <input class="custom-control-input" {{ Filter == Category.slug ? 'checked' : '' }} type="radio" name="filter" id="filter-{{ Category.slug }}" value="{{ Category.slug }}">
+                     <label class="custom-control-label" for="filter-{{ Category.slug }}">{{ Category.name }}</label>
+                 </div>
+             {% endfor %}
+         </form>
+      </div>
+      <div class="row" id="postsWrap">
+         {% partial 'posts/default' pagination=true %}
+      </div>
+   </div>
+</section>

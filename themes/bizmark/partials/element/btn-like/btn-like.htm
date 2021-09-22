@@ -1,0 +1,9 @@
+{% if itemID in Favorites.favoritesID %}
+    <button class="btn btn-like active" data-value="{{ itemID }}">
+        <i class="fas fa-heart"></i>
+    </button>
+{% else %}
+    <button class="btn btn-like" data-value="{{ itemID }}">
+        <i class="fas fa-heart"></i>
+    </button>
+{% endif %}

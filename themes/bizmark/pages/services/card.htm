@@ -1,0 +1,40 @@
+title = "Карточка услуги"
+url = "/services/:item"
+layout = "default"
+is_hidden = 0
+
+[ServiceItem]
+slug = "{{ :item }}"
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/services-card.css', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page no-margin"
+{% endput %}
+
+{% set service =  ServiceItem.service %}
+
+{% set breadcrumbs = [
+   {'title': 'Услуги', 'url' : 'services/listing'|page },
+   {'title': service.name, 'isActive' : true }
+] %}
+
+<section class="services-card">
+   <div class="container">
+      {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+      <h1 class="h1 page-title">{{ service.name }}</h1>
+      {% if service.image %}<img class="img-fluid card-image" src="{{ service.image.path }}" alt="">{% endif %}
+       <div class="fr-view">
+           {{ service.description|raw }}
+       </div>
+   </div>
+</section>
+{% partial 'feedback-form-2/feedback-form-2' %}

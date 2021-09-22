@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+
+    name:
+        label: Название услуги
+        searchable: true
+
+    slug:
+        label: Slug
+
+    created_at:
+        label: Создано
+        type: date
+        sortable: true
+
+    updated_at:
+        label: Обновлено
+        type: date
+        sortable: true

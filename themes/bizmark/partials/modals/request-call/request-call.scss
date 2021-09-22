@@ -1,0 +1,85 @@
+.modal-dialog {
+   max-width: 680px;
+}
+
+.modal-content {
+   border-radius: 0;
+   border: none;
+   .btn {
+      box-shadow: none;
+   }
+}
+
+.modal-from {
+   padding: 30px 30px 35px;
+   .btn-blue {
+      background-color: #24244D;
+      padding: 14px 0;
+      text-transform: uppercase;
+      &:hover {
+         background-color: #25396E;
+      }
+   }
+   .form-control {
+      border-radius: 0;
+      border: 1px solid $btn_blue;
+   }
+   .custom-control-label {
+      color: #373637;
+   }
+}
+
+.form-group {
+   margin-bottom: 15px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+   border: none;
+   background-color: #24244D;
+}
+.form-checkbox {
+   margin: 30px 0 30px;
+}
+.form-headline {
+   margin-bottom: 30px;
+}
+
+.message-wrap {
+   min-height: 342px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   .message {
+      display: block;
+      text-align: center;
+      font-weight: 300;
+   }
+   .message.succsess {
+      color: #373637;
+   }
+   .message.error {
+      color: #CE0000;
+   }
+}
+.btn-modal {
+   position: absolute;
+   top: 0;
+   right: 0;
+   outline: none;
+   line-height: 1;
+   font-size: 22px;
+   color: #323888;
+   padding: 10px 15px;
+}
+
+
+
+@media (max-width: 576px) {
+   .modal-dialog {
+      margin: 0;
+   }
+   .modal-from {
+      padding: 30px 20px;
+   }
+}
+

@@ -1,0 +1,43 @@
+<section id="сonsultation">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8">
+            <div class="сonsultation-info">
+               <div class="top-section">
+                  <h2 class="h1 h1-section">Проведем индивидуальную консультацию</h2>
+                  <p class="subtitle">Изучим вашу задачу, подберем необходимое решение.</p>
+               </div>
+               <form class="сonsultation-form" data-request="consultForm::onFormSubmit">
+                   {{ form_token() }}
+                  <span class="h-form">Закажите звонок</span>
+                  <div class="row">
+                     <div class="col-md-6 form-group">
+                        <label class="form-label" for="about-form-name">Имя</label>
+                        <input class="form-control" id="about-form-name" name="about-form-name" type="text" placeholder="Иван Александрович" required>
+                     </div>
+                     <div class="col-md-6 form-group">
+                        <label class="form-label" for="about-form-phone">Номер телефона</label>
+                        <input class="form-control" id="about-form-phone" name="about-form-phone" type="text" placeholder="+7 555 555 55 55" data-phone="true" required>
+                     </div>
+                     <div class="col-12 form-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="about-form-checkbox" name="about-form-checkbox" required>
+                        <label class="custom-control-label" for="about-form-checkbox">Отправляя сообщение, вы соглашаетесь с Политикой конфиденциальности</label>
+                     </div>
+                     <div class="col-12">
+                        <div class="btn-wrap">
+                           <div id="consult_forms_flash"></div>
+                           <button type="submit" class="btn btn-blue">Заказать звонок<i class="fas fa-phone-alt btn-icon"></i></button>
+                           <span class="phone-wrap">или по телефону: <a class="phone-link" href="tel:{{ this.theme.contacts.phone }}">{{ this.theme.contacts.phone }}</a></span>
+                        </div>
+                        <div id="consultForm_forms_flash" class="mt-3"></div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="col-lg-4 left-section">
+            <img class="img-fluid woman" src="{{ 'assets/images/about-woman.min.png'|theme }}" alt="Женщина">
+         </div>
+      </div>
+   </div>
+</section>

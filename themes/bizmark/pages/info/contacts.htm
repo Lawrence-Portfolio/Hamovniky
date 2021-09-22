@@ -1,0 +1,92 @@
+title = "Контакты"
+url = "/contacts"
+layout = "default"
+is_hidden = 0
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/contacts.css', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page contacts-page no-margin"
+{% endput %}
+
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+<div class="container">
+   {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+</div>
+<section class="contacts">
+   <div class="container">
+      <h1 class="h1 page-title">Контакты</h1>
+      {% if this.theme.contacts.image %}
+          <img class="img-fluid contact-img" src="{{ this.theme.contacts.image|media }}" alt="Хамовники агенство недвижимости">
+      {% endif %}
+      <div class="row">
+         {% if this.theme.contacts.address %}
+             <div class="col-xl-4 col-lg-5 col-md-6">
+                <div class="contact-wrap">
+                   <div class="contact-title">Адрес</div>
+                   <div class="contact-info contact-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      {{ this.theme.contacts.address }}
+                   </div>
+                </div>
+             </div>
+         {% endif %}
+         {% if this.theme.contacts.phone or this.theme.contacts.email %}
+             <div class="col-xl-8 col-lg-7 col-md-6">
+                <div class="contact-wrap">
+                   <div class="contact-title">Связь</div>
+                   <div class="contact-info">
+                      {% if this.theme.contacts.email %}
+                          <a class="contact-item" href="mailto:{{ this.theme.contacts.email }}">
+                             <i class="fas fa-envelope"></i>
+                             {{ this.theme.contacts.email }}
+                          </a>
+                      {% endif %}
+                      {% if this.theme.contacts.phone %}
+                          <a class="contact-item" href="tel:{{ this.theme.contacts.phone }}">
+                             <i class="fas fa-phone-alt"></i>
+                             {{ this.theme.contacts.phone }}
+                          </a>
+                      {% endif %}
+                   </div>
+                </div>
+             </div>
+         {% endif %}
+         {% if this.theme.contacts.worktime %}
+             <div class="col-xl-4 col-lg-5 col-md-6">
+                <div class="contact-wrap">
+                   <div class="contact-title">Режим работы</div>
+                   <div class="contact-info contact-item">
+                      <i class="fas fa-clock"></i>
+                      {{ this.theme.contacts.worktime }}
+                   </div>
+                </div>
+             </div>
+         {% endif %}
+         {% if this.theme.contacts.viber or this.theme.contacts.whatsapp or this.theme.contacts.telegram %}
+             <div class="col-xl-8 col-lg-7 col-md-6">
+                <div class="contact-wrap">
+                   <div class="contact-title">Мессенджеры</div>
+                   <div class="sotial-links">
+                      {% if this.theme.contacts.viber %}<a class="link" href="viber://chat?number={{ this.theme.contacts.viber }}"><i class="fab fa-viber"></i></a>{% endif %}
+                      {% if this.theme.contacts.whatsapp %}<a class="link" href="https://wa.me/{{ this.theme.contacts.whatsapp }}"><i class="fab fa-whatsapp"></i></a>{% endif %}
+                      {% if this.theme.contacts.telegram %}<a class="link" href="http://t.me/{{ this.theme.contacts.telegram }}"><i class="fab fa-telegram"></i></a>{% endif %}
+                   </div>
+                </div>
+             </div>
+         {% endif %}
+      </div>
+   </div>
+</section>
+{% partial 'feedback-form-2/feedback-form-2' %}

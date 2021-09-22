@@ -1,0 +1,32 @@
+@import '../../build/scss/color.scss';
+@import '../../partials/article/card/card.scss';
+@import '../../partials/element/pagination/pagination.scss';
+
+
+
+.headline-wrapper {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.articles-filter-form {
+   display: flex;
+   .custom-control-label {
+      font-size: 14px;
+      font-weight: 300;
+      padding: 0;
+      cursor: pointer;
+      &::after, &::before {
+         display: none;
+      }
+   }
+   .custom-control-input:checked~ .custom-control-label {
+      font-weight: 500;
+   }
+}
+
+@media(max-width: 575px) {
+   .form-check {
+      padding-left: 0.7rem;
+   }
+}

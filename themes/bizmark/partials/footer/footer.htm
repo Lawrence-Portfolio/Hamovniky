@@ -1,0 +1,58 @@
+<footer>
+   <div class="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-4 col-12 logo-section">
+               <a href="/"><img class="img-fluid" src="{{ 'assets/images/svg/logo.svg'|theme }}" alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+               <ul class="footer-list">
+                  <li class="list-item">
+                     <a href="/" class="list-link">Главная</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'info/about-us'|page }}" class="list-link">Об агентстве</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'property/listing'|page }}" class="list-link">Купить квартиру</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'services/listing'|page }}" class="list-link">Услуги</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'articles/listing'|page }}" class="list-link">Статьи</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'typical/typical'|page }}" class="list-link">Район Хамовники</a>
+                  </li>
+                  <li class="list-item">
+                     <a href="{{ 'info/contacts'|page }}" class="list-link">Контакты</a>
+                  </li>
+                   <li class="list-item">
+                       <a href="{{ 'info/terms'|page }}" class="list-link">Пользовательское соглашение</a>
+                   </li>
+               </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+               <div class="footer-info">
+                  {% if this.theme.contacts.address %}<span class="info-item address">{{ this.theme.contacts.address }}</span>{% endif %}
+                  {% if this.theme.contacts.worktime %}<span class="info-item clock">{{ this.theme.contacts.worktime }}</span>{% endif %}
+                  {% if this.theme.contacts.phone %}<span class="info-item phone"><a href="tel:{{ this.theme.contacts.phone }}">{{ this.theme.contacts.phone }}</a></span>{% endif %}
+                  {% if this.theme.contacts.email %}<span class="info-item email-info"><a href="mailto:{{ this.theme.contacts.email }}">{{ this.theme.contacts.email }}</a></span>{% endif %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="copywriter">
+      <div class="container">
+         <div class="wrap">
+            <div class="content">
+               <span class="content-item">2020 @ Агентство недвижимости Хамовники</span>
+               <a class="content-item watermark" href="https://biz-mark.ru" target="_blank">Разработка Веб-Студия Biz-Mark</a>
+            </div>
+            <div class="decor"></div>
+         </div>
+      </div>
+   </div>
+</footer>

@@ -1,0 +1,26 @@
+.breadcrumb {
+   background-color: transparent;
+   padding: 15px 0;
+   font-size: 13px;
+   font-weight: 300;
+   margin-bottom: 0;
+}
+.breadcrumb-item a {
+   color: #1C1C1C;
+}
+.breadcrumb-item + .breadcrumb-item {
+   position: relative;
+   padding-left: 10px;
+   color: #1C1C1C;
+   &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 1px);
+      left: 4px;
+      padding: 0;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background-color: $main_color_blue;
+   }
+} 

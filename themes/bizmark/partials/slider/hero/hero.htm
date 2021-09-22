@@ -1,0 +1,20 @@
+<div id="hero-slider">
+   {% for item in this.theme.main.slider %}
+   <div class="slider-item" style="background-image: url({{ item.image|media }})">
+      <div class="slider-item-wrap">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 offset-lg-2">
+                  <div class="col-wrap">
+                     <span class="second-title">{{ item.subcaption }}</span>
+                     <span class="main-title">{{ item.caption }}</span>
+                     <span class="description">{{ item.description }}</span>
+                     {% if item.button.status %}<a href="{{ item.button.link }}" class="btn slider-btn">{{ item.button.content }}</a>{% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {% endfor %}
+</div>

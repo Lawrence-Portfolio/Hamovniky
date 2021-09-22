@@ -1,0 +1,34 @@
+{% set type = item.type %}
+{% if type == 'APARTMENT' %}
+    {% set link = 'property/listing-urban'|page %}
+{% elseif type == 'ESTATE' %}
+    {% set link = 'property/listing-suburban'|page %}
+{% elseif type == 'COMMERCIAL' %}
+    {% set link = 'property/listing-commercial'|page %}
+{% endif %}
+
+<div class="col-lg-4 col-md-6 col-card">
+   <div class="card apartament-card">
+      <div class="img-wrap">
+         <a href="{{ link }}/{{ item.slug }}">
+            <img class="card-img-top" src="{{ item.preview.path }}" alt="Квартира">
+         </a>
+         <div class="address-wrap">
+            <span class="address">
+               {{ item.address }}
+            </span>
+            {% partial 'element/btn-like/btn-like' itemID = item.id %}
+         </div>
+      </div>
+      <div class="card-content">
+         <span class="name">{{ item.name }}</span>
+         <span class="price">{{ item.price|number_format(0, '.', ' ') }} ₽</span>
+         <ul class="card-list">
+            {% if item.floor %}<li class="list-item">{{ item.floor }} этаж</li>{% endif %}
+            {% if item.area_size %}<li class="list-item">{{ item.area_size }} м</li>{% endif %}
+            {% if item.rooms %}<li class="list-item">{{ item.rooms }} комнат(ы)</li>{% endif %}
+         </ul>
+      </div>
+      <a class="btn btn-blue btn-block" href="{{ link }}/{{ item.slug }}">Подробнее</a>
+   </div>
+</div>

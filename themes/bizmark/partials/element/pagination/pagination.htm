@@ -1,0 +1,27 @@
+{% set query = getQueryForPagination(input()) %}
+{% if results.lastPage > 1 %}
+    <div class="pagination-layout">
+{#        <button class="btn btn-grey">Загрузить еще</button>#}
+        <nav>
+            <ul class="pagination">
+                {% if results.currentPage > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ results.previousPageUrl }}"><i class="far fa-chevron-left"></i></a></li>
+                {% endif %}
+
+                {% for page in 1..results.lastPage %}
+                    <li class="page-item">
+                        <a
+                                class="page-link {{ results.currentPage == page ? 'active' : null }}"
+                                href="{{ this.page.baseFileName | page }}?page={{ page }}{{ query ? '&'~query : '' }}">
+                            {{ page }}
+                        </a>
+                    </li>
+                {% endfor %}
+
+                {% if results.lastPage > results.currentPage %}
+                    <li class="page-item"><a class="page-link" href="{{ results.nextPageUrl }}"><i class="far fa-chevron-right"></i></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

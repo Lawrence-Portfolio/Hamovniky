@@ -1,0 +1,30 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Название услуги
+        span: auto
+
+    slug:
+        label: Slug (заполняется автоматически)
+        span: auto
+        preset:
+            field: name
+            type: slug
+
+    description:
+        label:  Описание
+        span: full
+        type: richeditor
+
+    preview:
+        label: Миниатюра на превью
+        span: left
+        type: fileupload
+
+    image:
+        label: Изображение
+        span: right
+        type: fileupload

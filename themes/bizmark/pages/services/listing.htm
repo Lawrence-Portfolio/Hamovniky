@@ -1,0 +1,36 @@
+title = "Услуги"
+url = "/services"
+layout = "default"
+is_hidden = 0
+
+[ServiceCatalog]
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/services-listing.css', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page listing-page"
+{% endput %}
+
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+<section>
+   <div class="container">
+      {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+      <h1 class="h1 page-title">Услуги</h1>
+      <div class="row">
+          {% for item in ServiceCatalog.services %}
+            {% partial 'services/card/card' item=item %}
+         {% endfor %}
+      </div>
+   </div>
+</section>

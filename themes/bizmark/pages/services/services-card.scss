@@ -1,0 +1,10 @@
+@import '../../build/scss/color.scss';
+
+@import '../../partials/feedback-form-2/feedback-form-2.scss';
+
+.services-card {
+   padding-bottom: 40px;
+   .card-image {
+      margin-bottom: 30px;
+   }
+}

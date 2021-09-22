@@ -1,0 +1,54 @@
+title = "Аренда: Загородная недвижимость"
+url = "/properties/suburban-property-rent"
+layout = "default"
+is_hidden = 0
+
+[OfferCatalog]
+mode = "Suburban-Rent"
+items = 9
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/property-listing.css', 'themes/bizmark/assets');
+   $this['path_page_js'] = mix('js/property-listing.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put page_script %}
+   <script>
+      var imageUrl = "{{ 'assets/images/apartament-min.jpg'|theme }}"
+      var markIcon = "{{ 'assets/images/svg/map-mark.svg'|theme }}"
+   </script>
+   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=33951983-7243-49db-8da0-1a0ceb66b58c" type="text/javascript"></script>
+   <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+
+{% put main_attrs %}
+   class="inner-page listing-page"
+{% endput %}
+
+
+{% set breadcrumbs = [
+    {'title': 'Недвижимость', 'url' : 'property/listing'|page },
+    {'title': this.page.title, 'isActive' : true }
+] %}
+
+<section>
+   <div class="container">
+      {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+      <h1 class="h1 page-title">{{ this.page.title }}</h1>
+   </div>
+</section>
+
+<section class="filter-form-section">
+   <div class="container">
+      {% partial 'property/listing/form/suburban' adtype='RENT' animals_and_kids=true %}
+   </div>
+</section>
+<div id="yandex-map"></div>
+{% component 'OfferCatalog' %}

@@ -1,0 +1,36 @@
+.article-card {
+   margin-bottom: 30px;
+   .card-content {
+      padding: 0;
+   }
+   .article-name {
+      display: block;
+      padding: 15px 0;
+      font-size: 18px;
+   }
+   .article-date {
+      padding-left: 22px;
+      position: relative;
+      font-size: 14px;
+      color: #4A4A4A;
+      font-weight: 300;
+      &::before {
+         content: '\f073';
+         position: absolute;
+         top: calc(50% - 14px);
+         left: 0;
+         font-size: 16px;
+         font-weight: 300;
+         color: #4A4A4A;
+         font-family: "Font Awesome 5 Pro";
+      }
+   }
+}
+
+@media(max-width: 767px) {
+   .article-card {
+      .article-name {
+         padding: 15px 0 5px;
+      }
+   }
+}

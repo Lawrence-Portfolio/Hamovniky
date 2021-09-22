@@ -1,0 +1,59 @@
+fields:
+    info:
+        label: Информация
+        span: full
+        type: nestedform
+        usePanelStyles: false
+        form:
+            fields:
+                h1:
+                    label: Заголовок (h1)
+                    span: full
+                image:
+                    label: Изображение
+                    span: full
+                    type: mediafinder
+                description:
+                    label: Описание
+                    type: richeditor
+                    span: full
+
+
+    slider:
+        label: Слайдер
+        span: full
+        type: repeater
+        form:
+            fields:
+                image:
+                    label: Изображение
+                    span: full
+                    type: mediafinder
+                caption:
+                    label: Основной заголовок
+                    span: left
+                subcaption:
+                    label: Дополнительный заголовок
+                    span: right
+                description:
+                    label: Описание
+                    span: full
+                    type: textarea
+                button:
+                    label: Кнопка
+                    span: full
+                    type: nestedform
+                    usePanelStyles: false
+                    form:
+                        fields:
+                            status:
+                                label: Состояние кнопки
+                                type: switch
+                                on: Вкл
+                                off: Выкл
+                            content:
+                                label: Текст на кнопке
+                                span: left
+                            link:
+                                label: Ссылка
+                                span: right

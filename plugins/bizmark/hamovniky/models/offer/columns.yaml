@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    name:
+        label: Название
+        searchable: true
+
+    address:
+        label: Адрес
+        searchable: true
+
+    ad_type:
+        label: Тип объявления
+        sortable: true
+
+    type:
+        label: Тип недвижимости
+        sortable: true

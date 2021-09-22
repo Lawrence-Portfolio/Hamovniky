@@ -1,0 +1,511 @@
+@import '../../build/scss/color.scss';
+@import '../../partials/property/card/gallery-slider/gallery-slider.scss';
+@import '../../partials/element/btn-like/btn-like.scss';
+@import '../../partials/apartament/card/card.scss';
+
+html {
+    scroll-behavior: smooth;
+}
+
+.rub {
+    font-size: 22px;
+}
+.copy-link {
+    cursor: pointer;
+}
+.top-page-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transform: translateY(-80px);
+    transition: all .5s ease-in-out;
+    background-color: $main_color_blue;
+    visibility: hidden;
+    .top-page-nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        .list-link {
+            display: block;
+            color: #fff;
+            font-size: 18px;
+            padding: 24px 0;
+        }
+        .list-item {
+            margin-right: 35px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    .price {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 60px;
+        color: #fff;
+    }
+    .btns-wrap {
+        display: flex;
+    }
+    .btn-share {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: 8px;
+        margin-left: 5px;
+        background-color: #fff;
+        color: $second_color_blue;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .dropdown-menu  {
+        margin: 0;
+        margin-top: 5px;
+        padding: 10px 15px;
+        border: none;
+        box-shadow: 2px 2px 5px -1px rgba($color: #000000, $alpha: .5);
+    }
+    .sotial-links {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    .sotial-link {
+        font-size: 18px;
+        color: $second_color_blue;
+    }
+    .copy-link {
+        font-size: 14px;
+        color: $second_color_blue;
+    }
+}
+.top-page-nav.show {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.property-card-page {
+    padding: 40px 0 60px;
+    background-color: #FBFBFB;
+    .page-title {
+        margin-bottom: 40px;
+    }
+}
+
+.property-metro-station {
+    .icon-metro {
+        width: 21px;
+        height: 21px;
+        object-fit: contain;
+    }
+    .metro-name {
+
+    }
+    .time-to-metro {
+        margin-left: 5px;
+        color: #737a8e;
+        font-size: 14px;
+    }
+}
+
+.right-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.property-card-wrap {
+    border: 1px solid #ECEDF5;
+    background-color: #fff;
+    .icon {
+        margin-right: 10px;
+    }
+    .header-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        
+        .btn-like {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+    .body-card {
+        border-top: 1px solid #ECEDF5;
+        border-bottom: 1px solid #ECEDF5;
+        padding: 20px;
+        color: #4A4A4A;
+        .body-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: 300;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .footer-card {
+        display: flex;
+        padding: 20px;
+    }
+    .property-price {
+        font-size: 36px;
+        font-weight: 700;
+    }
+    .property-specifications {
+        .specifications {
+            position: relative;
+            padding-right: 15px;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 5px;
+                bottom: 5px;
+                right: 5px;
+                width: 1px;
+                background-color: #000;
+            }
+            &:last-child {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+    .footer-card-link {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        margin-right: 12px;
+        color: $second_color_blue;
+        &:hover {
+            text-decoration: none;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .text-link {
+        font-size: 12px;
+    }
+    
+}
+
+.title {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.property-card-feedback {
+    padding: 20px;
+    background-color: #fff;
+    .form-group {
+        margin-bottom: 25px;
+    }
+    .form-control {
+        border-color: $main_color_blue;
+    }
+    .btn-submit {
+        padding: 9px 20px;
+        font-size: 18px;
+        i {
+            font-size: 14px;
+            margin-left: 12px;
+        }
+    }
+}
+
+.property-consultant {
+    padding: 20px;
+    background-color: #fff;
+    .consultant-card {
+        display: flex;
+        align-items: flex-start;
+        font-weight: 300;
+    }
+    .consultant-avatar {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        margin-right: 20px;
+    }
+    .consultant-profile {
+        margin-top: 10px;
+    }
+    .consultant-name {
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .consultant-email,
+    .consultant-phone {
+        margin-top: 10px;
+        display: block;
+        i {
+            color: $main_color_blue;
+            margin-right: 10px;
+        }
+    }
+}
+
+.property-description {
+    .h1 {
+        margin-bottom: 20px;
+    }
+}
+
+.property-info {
+    display: flex;
+    justify-content: center;
+    padding: 30px 10px;
+    background-color: #fff;
+    margin-bottom: 40px;
+    .info-item {
+        position: relative;
+        padding: 25px 10px;
+        border-right: 1px solid #ECEDF5;
+        text-align: center;
+        width: 20%;
+        &:last-child {
+            border-right: none;
+        }
+    }
+    .item-title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .item-category {
+        font-size: 18px;
+        font-weight: 300;
+    }
+}
+
+.page-nav {
+    .list {
+        padding: 0 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: #EAEAEA;
+    }
+    .list-link {
+        display: block;
+        padding: 22px 0;
+        font-size: 18px;
+    }
+}
+
+.property-description {
+    padding: 40px 0 60px;
+}
+
+.property-information {
+    padding-bottom: 60px;
+    background-color: #FBFBFB;
+    .info-wrap {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        border-bottom: 1px solid #C4C4C4;
+        padding: 20px 0;
+    }
+    .info-type {
+        font-weight: 300;
+        color: #4A4A4A;
+    }
+    .h1 {
+        margin: 0;
+        padding: 40px 0;
+    }
+}
+
+#yandex-map {
+    height: 365px;
+    padding-top: 50px;
+}
+#similar-properties {
+    padding-top: 50px;
+    .h1 {
+        margin-bottom: 50px;
+    }
+}
+
+
+
+
+@media(max-width: 1199px) {
+    .property-card-wrap {
+        margin-bottom: 15px;
+        .header-card,
+        .body-card,
+        .footer-card {
+            padding: 15px 20px;
+        }
+        .property-price {
+            font-size: 24px;
+        }
+        .second-price {
+            font-size: 14px;
+        }
+        .body-card {
+            .body-item {
+                font-size: 15px;
+            }
+        }
+        .footer-card {
+            .text-link {
+                display: none;
+            }
+        }
+    } 
+    .property-info {
+        padding: 20px;
+        .info-item {
+            padding: 15px 20px;
+        }
+        .item-title {
+            font-size: 20px;
+        }
+        .item-category {
+            font-size: 14px;
+        }
+    }
+    .page-nav {
+        .list {
+            padding: 0 20px;
+        }
+        .list-link {
+            font-size: 16px;
+        }
+    }
+    .property-card-feedback  {
+        margin-bottom: 15px;
+        padding: 20px;
+    }
+    .title {
+        font-size: 16px;
+    }
+    .property-consultant {
+        padding: 20px;
+        .consultant-role, 
+        .property-phone,
+        .consultant-email {
+            font-size: 14px;
+        }
+        .consultant-avatar {
+            margin-right: 15px;
+            width: 60px;
+        }
+        .consultant-profile {
+            margin-top: 5px;
+        }
+    }
+    .property-information {
+        .info-wrap {
+            font-size: 14px;
+        }
+    }
+    .top-page-nav {
+
+        .container {
+            padding: 0 30px;
+            max-width: 100%;
+        }
+        .list {
+            .list-item {
+                margin-right: 25px;
+            }
+            .list-link {
+                font-size: 16px;
+            }
+        }
+        .price {
+            font-size: 20px;
+        }
+        
+    }
+}
+
+@media(max-width: 991px) {
+    .top-page-nav {
+        .top-page-nav-wrap {
+            padding-bottom: 15px;
+            flex-direction: column;
+        }
+        .list {
+            margin-bottom: 10px;
+            justify-content: center;
+            .list-link {
+                padding: 5px 10px;
+            }
+        }
+        .price {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    }
+    .page-nav {
+        margin-bottom: 40px;
+    }
+}
+
+@media(max-width:767px) {
+    .top-page-nav {
+        display: none;
+    }
+    .property-info {
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .info-item {
+            border-right: none;
+        }
+    }
+    .page-nav {
+        .list {
+            padding: 10px 0;
+            justify-content: flex-start;
+        }
+        .list-link {
+            padding: 10px 20px;
+        }
+    }
+    .property-information .h1 {
+        padding: 30px 0 10px;
+    }
+    
+}
+
+@media(max-width: 575px) {
+    .top-page-nav .list {
+        flex-direction: column;
+        text-align: center;
+    }
+    .property-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .info-item {
+            width: auto;
+            padding: 10px 20px ;
+        }
+    }
+    .page-nav {
+        .list {
+            flex-direction: column;
+        }
+    }
+}

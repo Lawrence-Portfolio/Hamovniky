@@ -1,0 +1,40 @@
+fields:
+    description:
+        label: Описание
+        span: full
+        type: richeditor
+
+    advantages:
+        label: Преимущества
+        span: left
+        type: repeater
+        form:
+            fields:
+                image:
+                    label: Картинка
+                    span: full
+                    type: mediafinder
+                name:
+                    label: Преимущество
+                    span: full
+                description:
+                    label: Описание
+                    span: full
+                    type: textarea
+
+    team:
+        label: Наша команда
+        span: right
+        type: repeater
+        form:
+            fields:
+                image:
+                    label: Изображение
+                    span: full
+                    type: mediafinder
+                name:
+                    label: ФИО
+                    span: left
+                position:
+                    label: Должность
+                    span: right

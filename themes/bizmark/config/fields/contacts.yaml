@@ -1,0 +1,72 @@
+fields:
+    phone:
+        label: Контактный телефон
+        span: storm
+        cssClass: col-md-6
+
+    email:
+        label: Контактный email
+        span: storm
+        cssClass: col-md-6
+
+    address:
+        label: Адрес
+        span: storm
+        cssClass: col-md-6
+
+    worktime:
+        label: Время работы
+        span: storm
+        cssClass: col-md-6
+
+    viber:
+        label: Viber
+        span: storm
+        cssClass: col-md-4
+
+    whatsapp:
+        label: Whatsapp
+        span: storm
+        cssClass: col-md-4
+
+    telegram:
+        label: Telegram
+        span: storm
+        cssClass: col-md-4
+
+    twitter:
+        label: Twitter
+        span: storm
+        cssClass: col-md-4
+
+    facebook:
+        label: Facebook
+        span: storm
+        cssClass: col-md-4
+
+    instagram:
+        label: Instagram
+        span: storm
+        cssClass: col-md-4
+
+    vk:
+        label: VK
+        span: storm
+        cssClass: col-md-4
+
+    dzen:
+        label: Яндекс.Дзен
+        span: storm
+        cssClass: col-md-4
+
+    tiktok:
+        label: TikTok
+        span: storm
+        cssClass: col-md-4
+
+    image:
+        label: Изображение в Контактах
+        span: storm
+        cssClass: col-md-12
+        type: mediafinder
+        mode: image

@@ -1,0 +1,130 @@
+title = "Название статьи"
+url = "/articles/:slug"
+layout = "blog-post"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "articles/category"
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/articles-card.css', 'themes/bizmark/assets');
+}
+
+function onInit() {
+    $this['Categories'] = \RainLab\Blog\Models\Category::all();
+    $posts = \RainLab\Blog\Models\Post::query();
+
+    $this['Posts'] = $posts->take(4)->get();
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page card-page"
+{% endput %}
+
+{% set post = blogPost.post %}
+{% set breadcrumbs = [
+   {'title': 'Статьи и новости', 'url' : 'articles/listing'|page },
+   {'title': post.title, 'isActive' : true }
+] %}
+
+<div class="container">
+   {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+</div>
+
+<section id="articles-card-page">
+   <div class="container">
+      <h1 class="h1 page-title">{{ post.title }}</h1>
+      <div class="date-wrap">
+         <span class="date">{{ post.published_at | date('d.m.Y') }}</span>
+         <span class="category-name">
+             {% if post.categories.count %}
+                 {% for category in post.categories %}
+                     {{ category.name }}
+                 {% endfor %}
+             {% endif %}
+         </span>
+      </div>
+       <div class="fr-view">
+           {{ post.content_html|raw }}
+       </div>
+      <div class="share-wrap">
+         <span class="share">Поделиться:</span>
+         <script src="https://yastatic.net/share2/share.js"></script>
+         <div class="ya-share2" data-curtain data-shape="round" data-color-scheme="blackwhite" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>
+{#         <a class="share-link" href="#">#}
+{#            <i class="fab fa-facebook-f"></i>#}
+{#         </a>#}
+{#         <a class="share-link" href="#">#}
+{#            <i class="fab fa-vk"></i>#}
+{#         </a>#}
+{#         <a class="share-link" href="#">#}
+{#            <i class="fab fa-odnoklassniki"></i>#}
+{#         </a>#}
+      </div>
+   </div>
+</section>
+<section id="article-author">
+   <div class="container">
+      <div class="wrapper">
+         <img class="img-fluid author-photo" src="{{ this.theme.consult.photo|media }}" alt="{{ this.theme.consult.name }}" width="119px" height="119px">
+         <div class="author-info">
+            <span class="author-name">
+               {{ this.theme.consult.name }}
+            </span>
+            <span class="author-position">
+               {{ this.theme.consult.position }}
+            </span>
+            <span class="author-description">
+               {{ this.theme.consult.description }}
+            </span>
+         </div>
+      </div>
+   </div>
+</section>
+<section id="prev-and-next">
+   <div class="container">
+      <div class="wrapper">
+         <div class="prev-box">
+            {% if post.previousPost %}
+            <a href="{{ post.previousPost.slug }}">
+               <i class="far fa-chevron-left prev-btn"></i>
+            </a>
+            <div class="prev-content-box">
+               <span class="article-name">Предыдущая статья</span>
+               <span class="article-h">{{ post.previousPost.title }}</span>
+            </div>
+            {% endif %}
+         </div>
+         <div class="next-box">
+            {% if post.nextPost %}
+            <div class="next-content-box">
+               <span class="article-name">Следующая статья</span>
+               <span class="article-h">{{ post.nextPost.title }}</span>
+            </div>
+            <a href="{{ post.nextPost.slug }}">
+               <i class="far fa-chevron-right next-btn"></i>
+            </a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+</section>
+<section id="intresting">
+   <div class="container">
+      <h2 class="h1">Также будет интересно</h2>
+      <div class="row">
+         {% for item in Posts %}
+             {% partial 'article/card/card' post=item %}
+         {% endfor %}
+      </div>
+   </div>
+</section>

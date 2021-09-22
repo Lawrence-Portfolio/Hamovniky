@@ -1,0 +1,19 @@
+<section class="resault">
+    <div class="container">
+        <div class="top-filter">
+            <div id="searchCounter" class="label">
+                {% partial '@counter-partial' %}
+            </div>
+            <div class="filter-price">
+                <span class="label">Сортировка</span>
+                <select id="sortSelect" class="custom-filter-wrap" name="sort-type">
+                    <option value="price|asc">Дороже</option>
+                    <option value="price|desc">Дешевле</option>
+                </select>
+            </div>
+        </div>
+        <div id="offers">
+            {% partial '@list-partial' %}
+        </div>
+    </div>
+</section>

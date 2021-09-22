@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Объявление
+
+# Model Form Field configuration
+form: $/bizmark/hamovniky/models/offer/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Hamovniky\Models\Offer
+
+# Default redirect location
+defaultRedirect: bizmark/hamovniky/offers
+
+# Create page
+create:
+    title: Создание объявления
+    redirect: bizmark/hamovniky/offers/update/:id
+    redirectClose: bizmark/hamovniky/offers
+
+# Update page
+update:
+    title: Редактирование объявления
+    redirect: bizmark/hamovniky/offers
+    redirectClose: bizmark/hamovniky/offers
+
+# Preview page
+preview:
+    title: Preview Offer

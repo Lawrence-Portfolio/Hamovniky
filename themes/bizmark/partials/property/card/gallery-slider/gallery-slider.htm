@@ -1,0 +1,43 @@
+{#<div class="gallery-slider-wrap">
+    <div id="gallery-slider"> 
+        {% for item in slider %}
+        <div class="slider-item">
+            <img class="img-fluid tns-lazy-img" src="{{ item.path }}" data-src="{{ item.path }}" alt="Картинка">
+        </div>
+        {% endfor %}
+    </div>
+    <div class="gallery-slider-nav-wrap">
+        <div id="gallery-slider-nav">
+            {% for item in slider %}
+                <div class="slider-item">
+                    <div class="slider-wrap"> 
+                        <img class="img-fluid tns-lazy-img" src="{{ item.path }}" data-src="{{ item.path }}" alt="Картинка">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>#}
+<div class="splide gallery-slider">
+	<div class="splide__track">
+		<ul class="splide__list">
+            {% for item in slider %}
+            <li class="splide__slide">
+                <img class="img-fluid" src="{{ item.path }}" alt="Картинка">
+            </li>
+            {% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div class="splide gallery-slider-nav">
+	<div class="splide__track">
+		<ul class="splide__list">
+            {% for item in slider %}
+            <li class="splide__slide">
+                <img class="img-fluid" src="{{ item.path }}" alt="Картинка">
+            </li>
+            {% endfor %}
+		</ul>
+	</div>
+</div>

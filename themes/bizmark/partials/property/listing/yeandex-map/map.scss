@@ -1,0 +1,255 @@
+#yandex-map {
+   width: 100%;
+}
+#yandex-map.open {
+   height: 600px;
+}
+
+.ymaps-2-1-77-balloon {
+   box-shadow: none!important;
+}
+
+.ymaps-2-1-77-balloon__layout {
+   background: transparent!important;
+   border-radius: 2px;
+}
+
+.ymaps-2-1-77-balloon__content {
+   margin-right: 0!important;
+   padding: 0!important;
+   background: transparent!important;
+}
+
+.ymaps-2-1-77-map-copyrights-promo,
+.ymaps-2-1-77-balloon__close {
+   display: none;
+}
+.ymaps-2-1-77-balloon__tail {
+   display: none!important;
+}
+// .ymaps-2-1-77-balloon__close {
+//    display: none!important;
+// }
+
+// .custom-balloon {
+//    padding: 5px 50px 5px 5px;
+//    display: flex;
+//    align-items: center;
+//    border-radius: 2px;
+//    background-color: #fff;
+//    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//    border-radius: 2px;
+//    margin: 10px;
+//    min-width: 335px;
+//    min-height: 70px;
+// }
+// .balloon-content {
+
+// }
+// .balloon-img-wrap {
+//    max-width: 69px;
+//    margin-right: 10px;
+// }
+// .balloon-item-content {
+//    margin-right: 30px;
+// }
+// .balloon-item-price {
+//    font-size: 18px;
+//    margin-bottom: 5px;
+// }
+
+// .balloon-like-btn {
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    position: absolute;
+//    top: calc(50% - 18px);
+//    right: 15px;
+//    width: 36px;
+//    height: 36px;
+//    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//    border-radius: 8px;
+// }
+
+// .balloon-item-specifications {
+//    display: flex;
+//    li {
+//       position: relative;
+//       color: #4A4A4A;
+//       font-size: 12px;
+//       font-weight: 300;
+//       padding-right: 10px;
+//       &:last-child {
+//          padding-right: 0;
+//          &::after {
+//             display: none;
+//          }
+//       }
+//       &::after {
+//          content: '';
+//          position: absolute;
+//          right: 5px;
+//          top: 5px;
+//          bottom: 5px;
+//          width: 1px;
+//          background-color: #4A4A4A;
+//       }
+//    }
+// }
+
+// .balloon-like-btn {
+//    color: #C9C8C9;
+//    cursor: pointer;
+//    transition: all .2s ease-in-out;
+// }
+
+// .balloon-like-btn.active {
+//    color: #151963;
+// }
+
+// .balloon-item {
+//    position: relative;
+//    margin: 10px;
+// }
+
+// .balloon-link {
+//    display: block;
+//    &:hover {
+//       text-decoration: none;
+//    }
+// }
+
+// .balloon-list {
+//    max-height: 270px;
+//    overflow: scroll;
+// }
+
+// .balloon-arrow {
+//    width: 24px;
+//    height: 24px;
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    position: absolute;
+//    top: calc(50% - 12px);
+//    left: 0;
+//    color: $second_color_blue;
+//    background-color: #fff;
+//    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//    border-radius: 2px;
+// }
+
+// .balloon-container {
+//    padding-left: 30px;
+//    position: relative;
+// }
+
+// .ymaps-2-1-77-balloon {
+//    // top: 0!important;
+//    left: 20px!important
+// }
+
+// .balloon-content {
+//    position: relative;
+// }
+
+.balloon-custom-layout {
+   position: relative;
+}
+.balloon-arrow {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 24px;
+   height: 24px;
+   position: absolute;
+   top: calc(50% - 12px);
+   left: -35px;
+   background: #FFFFFF;
+   font-size: 14px;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 2px;
+}
+.balloon-content {
+   max-width: 340px;
+}
+
+.balloon-item {
+   padding: 5px;
+   padding-right: 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #fff;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border: 1px solid rgba(74, 74, 74, 0.4);
+   border-radius: 2px;
+}
+.balloon-link {
+   display: flex;
+   align-items: center;
+   &:hover {
+      text-decoration: none;
+   }
+}
+.balloon-item-wrap {
+   margin: 10px 15px;
+}
+.balloon-item-price {
+   font-size: 18px;
+   margin-bottom: 3px;
+}
+.balloon-item-specifications {
+   display: flex;
+   font-size: 12px;
+   color: #4A4A4A;
+   li {
+      position: relative;
+      padding-right: 10px;
+      &::after {
+         content: '';
+         position: absolute;
+         right: 4px;
+         top: 1px;
+         bottom: 1px;
+         width: 1px;
+         background-color: #000;
+      }
+      &:last-child {
+         padding-right: 0;
+         &::after {
+            display: none;
+         }
+      }
+   }
+}
+.balloon-img {
+   max-width: 82px;
+}
+.balloon-like-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 36px;
+   height: 36px;
+   background: #FFFFFF;
+   color: #C9C8C9;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 8px;
+   cursor: pointer;
+}
+.balloon-like-btn.active {
+   color: $second_color_blue;
+}
+
+.balloon-list {
+   overflow-y: scroll;
+   max-height: 243px;
+   .balloon-item {
+      margin-bottom: 10px;
+   }
+}
+
+.balloon-custom-layout {
+   min-width: 360px;
+}

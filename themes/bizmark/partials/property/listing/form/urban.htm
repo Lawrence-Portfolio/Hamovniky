@@ -1,0 +1,155 @@
+<form id="filterForm" class="filter-form" data-object="APARTMENT" data-adtype="{{ adtype }}">
+    {{ form_token() }}
+   <div class="row">
+      <div class="col-12">
+         <div class="title-section">
+            <div class="form-title">Подбор по параметрам:</div>
+            <div class="type-display">
+               <span class="label">Отображение</span>
+               <div class="radio-display">
+                  <input class="type-display-input" type="radio" id="display-tile" name="display" checked>
+                  <label class="type-display-label" for="display-tile">Плиткой <i class="tab-icon fas fa-th"></i></label>
+               </div>
+               <div class="radio-display">
+                  <input class="type-display-input" type="radio" id="display-map" name="display">
+                  <label class="type-display-label" for="display-map">Карта <i class="tab-icon fas fa-map-marker-alt"></i></label>
+               </div>
+            </div>
+         </div>
+      </div>
+       <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="form-section">
+               <span class="label">Кол-во комнат</span>
+               <div class="number-rooms">
+                   <div class="custom-radio-wrap">
+                       <input type="checkbox" class="custom-input checkbox-input form-input" id="one-room" name="numberRooms" value="1">
+                       <label class="custom-label" for="one-room">1</label>
+                   </div>
+                   <div class="custom-radio-wrap">
+                       <input type="checkbox" class="custom-input checkbox-input form-input" id="two-room" name="numberRooms" value="2">
+                       <label class="custom-label" for="two-room">2</label>
+                   </div>
+                   <div class="custom-radio-wrap">
+                       <input type="checkbox" class="custom-input checkbox-input form-input" id="three-room" name="numberRooms" value="3">
+                       <label class="custom-label" for="three-room">3</label>
+                   </div>
+                   <div class="custom-radio-wrap">
+                       <input type="checkbox" class="custom-input checkbox-input form-input" id="four-more-room" name="numberRooms" value="4">
+                       <label class="custom-label" for="four-more-room">4+</label>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="form-section">
+               <span class="label">Цена</span>
+               <div class="min-max-wrap">
+                   <input class="field-input form-input" type="text" name="min-price" placeholder="мин. цена">
+                   <div class="line"></div>
+                   <input class="field-input form-input" type="text" name="max-price" placeholder="макс. цена">
+               </div>
+           </div>
+       </div>
+       <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="form-section">
+               <span class="label">Площадь</span>
+               <div class="min-max-wrap area">
+                   <input class="field-input form-input" type="text" name="min-area" placeholder="мин.">
+                   <div class="line"></div>
+                   <input class="field-input form-input" type="text" name="max-area" placeholder="макс.">
+               </div>
+           </div>
+       </div>
+       <div class="col-xl-4 col-lg-4 col-sm-6">
+           <div class="form-section">
+               <span class="label">Тип жилья</span>
+               <select id="propertyType" class="custom-select-wrap select-input" name="property-type">
+                   <option disabled selected value="">Не выбрано</option>
+                   <option value="FLAT">Квартира</option>
+                   <option value="ROOM">Комната</option>
+                   <option value="STUDIO">Студия</option>
+                   <option value="APARTS">Апартаменты</option>
+                   <option value="CONDOMIN">Доля в квартире</option>
+               </select>
+           </div>
+       </div>
+       <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="form-section">
+               <span class="label">Ремонт</span>
+               <select id="repairType" class="custom-select-wrap select-input" name="repair-type">
+                   <option disabled selected value="">Не выбрано</option>
+                   <option value="WITHOUT">Без ремонта</option>
+                   <option value="COSMETIC">Косметический</option>
+                   <option value="EURO">Евроремонт</option>
+                   <option value="DESIGN">Дизайнерский</option>
+                   <option value="TYPICAL">Типовой</option>
+               </select>
+           </div>
+       </div>
+      <div class="col-xl-3 col-lg-4 col-sm-6">
+         <div class="form-section">
+            <span class="label">Ванна/Душ</span>
+            <select id="bathType" class="custom-select-wrap select-input" name="bath-type">
+               <option disabled selected value="">Не выбрано</option>
+               <option value="BATH">Ванна</option>
+               <option value="SHOWER">Душ</option>
+               <option value="BATH&SHOWER">Ванна и душ</option>
+            </select>
+         </div>
+      </div>
+      <div class="col-xl-6 col-md-12 col-sm-6">
+         <div class="form-section">
+            <span class="label">Этаж</span>
+            <div class="min-max-wrap area">
+                <input class="field-input form-input" type="text" id="min-floor" placeholder="мин." name="min-floor">
+                <div class="line"></div>
+                <input class="field-input form-input" type="text" id="max-floor" placeholder="макс." name="max-floor">
+            </div>
+            <div class="floor-checkbox-wrap">
+               <input class="custom-checkbox-input checkbox-input form-input" id="no-first" type="checkbox" name="basement" value="1">
+               <label class="custom-checkbox-label" for="no-first">Не первый</label>
+            </div>
+            <div class="floor-radio-wrap">
+               <input class="custom-checkbox-input checkbox-input form-input" id="no-last" type="checkbox" name="penthouse" value="1">
+               <label class="custom-checkbox-label" for="no-last">Не последний</label>
+            </div>
+         </div>
+      </div>
+      <div class="col-12">
+         <div class="bottom-from-wrap">
+             <div class="form-section">
+                 <span class="label">Особенности</span>
+                 <div class="floor-checkbox-wrap">
+                     <input class="custom-checkbox-input checkbox-input form-input" id="with-furniture" type="checkbox" name="furniture">
+                     <label class="custom-checkbox-label" for="with-furniture">С Мебелью</label>
+                 </div>
+                 <div class="floor-checkbox-wrap">
+                     <input class="custom-checkbox-input checkbox-input form-input" id="with-parking" type="checkbox" name="parking">
+                     <label class="custom-checkbox-label" for="with-parking">С парковкой</label>
+                 </div>
+                 {% if animals_and_kids %}
+                 <div class="floor-checkbox-wrap">
+                    <input class="custom-checkbox-input checkbox-input form-input" id="with-animals" type="checkbox" name="pets">
+                    <label class="custom-checkbox-label" for="with-animals">С животными</label>
+                </div>
+                <div class="floor-checkbox-wrap">
+                    <input class="custom-checkbox-input checkbox-input form-input" id="with-kids" type="checkbox" name="children">
+                    <label class="custom-checkbox-label" for="with-kids">С детьми</label>
+                </div>
+                 {% endif %}
+                 <div class="floor-checkbox-wrap">
+                     <input class="custom-checkbox-input checkbox-input form-input" id="with-lift" type="checkbox" name="elevator">
+                     <label class="custom-checkbox-label" for="with-lift">Лифт</label>
+                 </div>
+             </div>
+            <div class="btn-wrap">
+               <button type="reset" id="btn-reset" class="btn btn-drop-filters">
+                  <img src="{{ 'assets/images/svg/times-circle.svg'|theme }}" alt="Сбросить фильтры">
+                  Сбросить фильтры
+               </button>
+               <button type="submit" id="btn-search" class="btn btn-blue btn-search">Подобрать</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</form>

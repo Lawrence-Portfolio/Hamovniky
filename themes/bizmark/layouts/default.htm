@@ -1,0 +1,98 @@
+description = "Основной шаблон"
+
+[emptyForm callbackForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Хамовники - Заказ звонка"
+mail_recipients[] = "hamovniki@mail.ru"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[emptyForm consultationForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Хамовники - Заказ звонка"
+mail_recipients[] = "hamovniki@mail.ru"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[emptyForm consultForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Хамовники - Заказ звонка"
+mail_recipients[] = "hamovniki@mail.ru"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[emptyForm feedbackForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Хамовники - Заказ звонка"
+mail_recipients[] = "hamovniki@mail.ru"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[Favorites]
+
+[ServiceCatalog]
+==
+<?php
+function onStart() {
+    $this['path_layout_js'] = mix('js/common.js', 'themes/bizmark/assets');
+    $this['path_layout_css'] = mix('css/common.css', 'themes/bizmark/assets');
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" href="{{ 'assets/images/favicon.ico'|theme }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ 'assets/fonts/font-awesome/css/all.min.css'|theme }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ path_layout_css }}">
+    {% placeholder page_style %}
+    <title>{{ this.page.title }}</title>
+  </head>
+  <body>
+    {% partial 'header/header' %}
+    <main {% placeholder main_attrs %} >
+      {% page %}
+    </main>
+    {% partial 'footer/footer' %}
+    {% partial 'modals/request-call/request-call' %}
+    <script src="{{ path_layout_js }}"></script>
+    {% placeholder page_script %}
+  </body>
+</html>

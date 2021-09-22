@@ -1,0 +1,409 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    is_published:
+        label: Опубликовать?
+        type: switch
+        span: full
+        on: Да
+        off: Нет
+
+    name:
+        label: Название
+        required: true
+        span: storm
+        cssClass: col-md-3
+
+    slug:
+        label: Ссылка
+        placeholder: Заполняется автоматически
+        required: true
+        span: storm
+        cssClass: col-md-3
+        preset:
+            type: slug
+            field: name
+
+    ad_type:
+        label: Тип объявления
+        placeholder: Выберите тип
+        required: true
+        span: storm
+        cssClass: col-md-2
+        type: dropdown
+        options:
+            RENT: Аренда
+            SALE: Продажа
+
+    type:
+        label: Тип недвижимости
+        placeholder: Выберите тип
+        required: true
+        span: storm
+        cssClass: col-md-2
+        type: dropdown
+        options:
+            APARTMENT: Квартира и комнаты
+            ESTATE: Загородная недвижимость
+            COMMERCIAL: Коммерческая недвижимость
+
+
+    flat_type:
+        label: Тип квартиры / комнаты
+        placholder: Выберите тип
+        type: dropdown
+        span: storm
+        cssClass: col-md-2
+        options:
+            NULL: Не выбрано
+            FLAT: Квартира
+            ROOM: Комната
+            STUDIO: Студия
+            APARTS: Апартаменты
+            CONDOMIN: Доля в квартире
+        trigger:
+            action: show
+            field: type
+            condition: value[APARTMENT]
+
+    house_type:
+        label: Тип загородной недвижимости
+        placholder: Выберите тип
+        type: dropdown
+        span: storm
+        cssClass: col-md-2
+        options:
+            NULL: Не выбрано
+            HOUSE: Дом
+            PART_HOUSE: Часть дома
+            COUNTRY: Дача
+            COTTAGE: Коттедж
+            TOWNHOUSE: Таунхаус
+            PLOT: Участок
+        trigger:
+            action: show
+            field: type
+            condition: value[ESTATE]
+
+    commercial_type:
+        label: Тип коммерческой недвижимости
+        placholder: Выберите тип
+        type: dropdown
+        span: storm
+        cssClass: col-md-2
+        options:
+            NULL: Не выбрано
+            OFFICE: Офис
+            BUILDING: Здание
+            SALES_AREA: Торговая площадь
+            FREE_SQUARE: Помещение свободного назначения
+            PRODUCTION: Производство
+            STOCK: Склад
+            READY_BUSINESS: Готовый бизнес
+            GARAGE: Гараж
+        trigger:
+            action: show
+            field: type
+            condition: value[COMMERCIAL]
+
+    preview:
+        label: Миниатюра на превью
+        required: true
+        span: storm
+        cssClass: col-md-2
+        type: fileupload
+tabs:
+    fields:
+        address:
+            label: Адрес
+            required: true
+            tab: Основное
+            placeholder: Укажите адрес
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+
+        mkad_address:
+            label: От Мкада
+            placeholder: 'Степаньковское шоссе, 13 км от МКАД'
+            tab: Основное
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+
+        metro:
+            label: Ближайшие станции метро
+            prompt: Добавить станцию
+            tab: Основное
+            type: repeater
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+            form:
+                fields:
+                    name:
+                        label: Название метро
+                        span: auto
+                    time:
+                        label: Время до станции пешком
+                        span: auto
+
+        longitude:
+            label: Долгота
+            required: true
+            tab: Основное
+            type: number
+            span: storm
+            cssClass: col-md-3 col-md-offset-3
+
+        latitude:
+            label: Широта
+            required: true
+            tab: Основное
+            type: number
+            span: storm
+            cssClass: col-md-3
+
+        description:
+            label: Описание
+            tab: Основное
+            type: richeditor
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+
+        repairs_type:
+            label: Ремонт
+            tab: Основное
+            placholder: Выберите
+            type: dropdown
+            span: storm
+            cssClass: col-md-3 col-md-offset-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE], value[COMMERCIAL]
+            options:
+                NULL: Не выбрано
+                WITHOUT: Без ремонта
+                COSMETIC: Косметический
+                EURO: Евроремонт
+                DESIGN: Дизайнерский
+                TYPICAL: Типовой
+
+        bath_type:
+            label: Ванна / Душ
+            tab: Основное
+            placholder: Выберите
+            type: dropdown
+            span: storm
+            cssClass: col-md-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE]
+            options:
+                NULL: Не выбрано
+                BATH: Ванная
+                SHOWER: Душ
+                BATH&SHOWER: Ванная и душ
+
+        with_furniture:
+            label: С мебелью
+            tab: Основное
+            type: switch
+            on: Да
+            off: Нет
+            span: storm
+            cssClass: col-md-3 col-md-offset-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE]
+
+        with_parking:
+            label: С парковкой
+            tab: Основное
+            type: switch
+            on: Да
+            off: Нет
+            span: storm
+            cssClass: col-md-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE]
+
+        with_pets:
+            label: С животными
+            tab: Основное
+            type: switch
+            on: Да
+            off: Нет
+            span: storm
+            cssClass: col-md-3 col-md-offset-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE]
+
+        with_elevator:
+            label: Есть лифт
+            tab: Основное
+            type: switch
+            on: Да
+            off: Нет
+            span: storm
+            cssClass: col-md-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE], value[COMMERCIAL]
+
+        with_children:
+            label: С детьми
+            tab: Основное
+            type: switch
+            on: Да
+            off: Нет
+            span: storm
+            cssClass: col-md-3 col-md-offset-3
+            trigger:
+                action: show
+                field: type
+                condition: value[APARTMENT], value[ESTATE]
+
+        price:
+            label: Стоимость в рублях
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+            required: true
+
+        price_per_square:
+            label: Стоимость за кв.м. в рублях
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+            trigger:
+                action: show
+                field: ad_type
+                condition: value[SALE]
+
+        area_size:
+            label: Общая площадь
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+
+        living_size:
+            label: Жилая площадь
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+
+        floor:
+            label: Этаж
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+            required: true
+
+        max_floor:
+            label: Всего этажей
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+            required: true
+
+        rooms:
+            label: Количество комнат
+            tab: Стоимость и площадь
+            type: number
+            span: storm
+            cssClass: col-md-3
+            required: true
+
+
+        is_top_floor:
+            label: Последний этаж?
+            tab: Стоимость и площадь
+            type: switch
+            span: storm
+            on: Да
+            off: Нет
+            cssClass: col-md-3
+
+        lead_properties:
+            label: Lead характеристики
+            commentAbove: Характеристики которые выводятся сразу под галереей
+            prompt: Добавить характеристику
+            type: repeater
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+            form:
+                fields:
+                    property:
+                        label: Свойство
+                        placeholder: Выберите свойство
+                        span: auto
+                        type: dropdown
+                    property_value:
+                        label: Значение свойства
+                        placeholder: Укажите значение свойства
+                        required: true
+                        span: auto
+
+        common_properties:
+            label: Основные характеристики
+            commentAbove: Любая информация об объявлении
+            prompt: Добавить характеристику
+            type: repeater
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+            form:
+                fields:
+                    property:
+                        label: Свойство
+                        placeholder: Выберите свойство
+                        span: auto
+                        type: dropdown
+                    property_value:
+                        label: Значение свойства
+                        placeholder: Укажите значение свойства
+                        required: true
+                        span: auto
+
+        house_properties:
+            label: Характеристики обьекта / участка / дома
+            commentAbove: Информация о доме, о жилом массиве или похожее...
+            prompt: Добавить характеристику
+            type: repeater
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+            form:
+                fields:
+                    property:
+                        label: Свойство
+                        placeholder: Выберите свойство
+                        span: auto
+                        type: dropdown
+                    property_value:
+                        label: Значение свойства
+                        placeholder: Укажите значение свойства
+                        required: true
+                        span: auto
+
+
+        slider:
+            label: Изображения в слайдер
+            required: true
+            tab: Слайдер
+            span: storm
+            cssClass: col-md-6 col-md-offset-3
+            type: fileupload

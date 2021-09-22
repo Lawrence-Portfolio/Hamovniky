@@ -1,0 +1,30 @@
+title = "Типовая страница"
+url = "/typical"
+layout = "default"
+is_hidden = 0
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page"
+{% endput %}
+
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+
+<div class="container">
+   {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+</div>
+
+<section id="typical-page">
+   <div class="container">
+      <h1 class="h1 page-title">{{ this.theme.hamovniki.title }}</h1>
+      <div class="fr-view">
+          {{ this.theme.hamovniki.description|raw }}
+      </div>
+   </div>
+</section>

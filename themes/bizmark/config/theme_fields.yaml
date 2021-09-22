@@ -1,0 +1,31 @@
+tabs:
+    fields:
+        main:
+            tab: Главная
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/main.yaml'
+
+        about_us:
+            tab: Об агенстве
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/about_us.yaml'
+
+        contacts:
+            tab: Контакты
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/contacts.yaml'
+
+        hamovniki:
+            tab: Район Хамовники
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/hamovniki.yaml'
+
+        consult:
+            tab: Консультант
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/consult.yaml'

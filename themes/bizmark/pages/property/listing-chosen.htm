@@ -1,0 +1,41 @@
+title = "Избранные объекты"
+url = "/chosen-property"
+layout = "default"
+is_hidden = 0
+
+[FavoritesCatalog]
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/property-listing.css', 'themes/bizmark/assets');
+   $this['path_page_js'] = mix('js/property-listing.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put page_script %}
+   <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page listing-page"
+{% endput %}
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+
+<section id="chosen-objects-page">
+   <div class="container">
+      {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+      <h1 class="h1 page-title">Избранные объекты</h1>
+      <div class="row">
+         {% for item in FavoritesCatalog.offers %}
+            {% partial 'apartament/card/card' item=item %}
+         {% endfor %}
+      </div>
+   </div>
+</section>

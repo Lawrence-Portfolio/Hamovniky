@@ -1,0 +1,6 @@
+name: "Hamovniki"
+description: 'Custom template for Hamovniki'
+author: "Biz-Mark"
+homepage: 'https://biz-mark.ru'
+code: 'bizmark'
+form: ~/themes/bizmark/config/theme_fields.yaml

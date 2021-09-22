@@ -1,0 +1,73 @@
+title = "Список объектов"
+url = "/properties"
+layout = "default"
+is_hidden = 0
+
+[OfferCatalog]
+mode = "All"
+items = 9
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/property-listing.css', 'themes/bizmark/assets');
+   $this['path_page_js'] = mix('js/property-listing.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put page_script %}
+   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=33951983-7243-49db-8da0-1a0ceb66b58c" type="text/javascript"></script>
+   <script>
+      var favorites = [
+          {% for item in Favorites.favoritesID %}
+            {{ item }}{{ loop.last ? '' : ',' }}
+          {% endfor %}
+      ];
+      var arCoordinates = [
+          {% for object in OfferCatalog.offers %}
+          {
+            'id': {{ object.id }},
+            'longitude': {{ object.longitude }},
+            'latitude': {{ object.latitude }},
+            'price': {{ object.price ? object.price : 0 }},
+            'type': '{{ object.type }}',
+            'ad_type': '{{ object.ad_type }}',
+            'slug': '{{ object.slug }}',
+            'preview': '{{ object.preview.path }}',
+            'floor': '{{ object.floor }}',
+            'square': '{{ object.area_size }}',
+            'rooms': '{{ object.rooms }}',
+          } {{ loop.last ? '' : ',' }}
+          {% endfor %}
+      ];
+   </script>
+   <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+
+{% put main_attrs %}
+   class="inner-page listing-page"
+{% endput %}
+
+
+{% set breadcrumbs = [
+   {'title': this.page.title, 'isActive' : true }
+] %}
+
+<section>
+   <div class="container">
+      {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+      <h1 class="h1 page-title">{{ this.page.title }}</h1>
+   </div>
+</section>
+
+<section class="filter-form-section">
+   <div class="container">
+      {% partial 'property/listing/form/listing' %}
+   </div>
+</section>
+<div id="yandex-map"></div>
+{% component 'OfferCatalog' %}

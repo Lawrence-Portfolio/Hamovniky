@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Property
+
+# Model Form Field configuration
+form: $/bizmark/hamovniky/models/property/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Hamovniky\Models\Property
+
+# Default redirect location
+defaultRedirect: bizmark/hamovniky/properties
+
+# Create page
+create:
+    title: Создать свойство
+    redirect: bizmark/hamovniky/properties/update/:id
+    redirectClose: bizmark/hamovniky/properties
+
+# Update page
+update:
+    title: Отредактировать свойство
+    redirect: bizmark/hamovniky/properties
+    redirectClose: bizmark/hamovniky/properties
+
+# Preview page
+preview:
+    title: Просмотреть свойство

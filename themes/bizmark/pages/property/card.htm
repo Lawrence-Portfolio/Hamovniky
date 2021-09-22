@@ -1,0 +1,337 @@
+title = "ЖК Садовые Кварталы, 365 м"
+url = "/properties/:type/:item"
+layout = "default"
+is_hidden = 0
+
+[OfferItem]
+type = "{{ :type }}"
+slug = "{{ :item }}"
+==
+<?php
+function onStart() {
+   $this['path_page_css'] = mix('css/property-card.css', 'themes/bizmark/assets');
+   $this['path_page_js'] = mix('js/property-card.js', 'themes/bizmark/assets');
+}
+function onEnd() {
+    $this->page->title = $this->OfferItem->offer->name;
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ 'assets/libs/css/splide-core.min.css'|theme }}">
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+
+{% put page_script %}
+   <script src="{{ 'assets/libs/js/clipboard.js'|theme }}"></script>
+   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=33951983-7243-49db-8da0-1a0ceb66b58c" type="text/javascript"></script>
+   <script>
+        var arCoordinates = [
+            {
+                'longitude': {{ OfferItem.offer.longitude }},
+                'latitude': {{ OfferItem.offer.latitude }},
+            }
+        ];
+    </script>
+   <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% put main_attrs %}
+   class="inner-page"
+{% endput %}
+
+{% set item = OfferItem.offer %}
+{% set similars = OfferItem.offers %}
+{% set type = item.type %}
+{% set ad_type = item.ad_type %}
+
+{% if ad_type == 'RENT' %}
+    {% if type == 'APARTMENT' %}
+        {% set link_title = 'Квартиры и комнаты' %}
+        {% set link = 'property/listing-urban'|page %}
+    {% elseif type == 'ESTATE' %}
+        {% set link_title = 'Загородная недвижимость' %}
+        {% set link = 'property/listing-suburban'|page %}
+    {% elseif type == 'COMMERCIAL' %}
+        {% set link_title = 'Коммерческая недвижимость' %}
+        {% set link = 'property/listing-commercial'|page %}
+    {% endif %}
+
+    {% set link_title = 'Аренда: ' ~ link_title %}
+
+{% elseif ad_type == 'SALE' %}
+    {% if type == 'APARTMENT' %}
+        {% set link_title = 'Квартиры и комнаты' %}
+        {% set link = 'property/listing-urban-sale'|page %}
+    {% elseif type == 'ESTATE' %}
+        {% set link_title = 'Загородная недвижимость' %}
+        {% set link = 'property/listing-suburban-sale'|page %}
+    {% elseif type == 'COMMERCIAL' %}
+        {% set link_title = 'Коммерческая недвижимость' %}
+        {% set link = 'property/listing-commercial-sale'|page %}
+    {% endif %}
+
+    {% set link_title = 'Продажа: ' ~ link_title %}
+{% endif %}
+
+{% set breadcrumbs = [
+    {'title': 'Недвижимость', url: 'property/listing'|page },
+    {'title': link_title, url: link },
+    {'title': item.name, 'isActive' : true }
+] %}
+
+<div class="container">
+   {% partial 'element/breadcrumbs/breadcrumbs' breadcrumbs=breadcrumbs %}
+</div>
+<div class="top-page-nav">
+   <div class="container">
+      <div class="top-page-nav-wrap">
+         <ul class="list">
+             {% if item.description %}
+                 <li class="list-item">
+                     <a class="list-link" href="#description">Описание</a>
+                 </li>
+             {% endif %}
+             {% if item.common_properties %}
+                 <li class="list-item">
+                     <a class="list-link" href="#information">Общая информация</a>
+                 </li>
+             {% endif %}
+             {% if item.house_properties %}
+                 <li class="list-item">
+                     <a class="list-link" href="#about-home">О доме</a>
+                 </li>
+             {% endif %}
+            <li class="list-item">
+               <a class="list-link" href="#yandex-map">На карте</a>
+            </li>
+            <li class="list-item">
+               <a class="list-link" href="#similar-properties">Похожие объекты</a>
+            </li>
+         </ul>
+         <div class="price">{{ item.price|number_format(0, '.', ' ') }} <span class="rub">₽</span></div>
+         <div class="btns-wrap">
+            {% partial 'element/btn-like/btn-like' itemID=item.id %}
+            <div class="dropdown">
+               <a href="#" class="btn btn-share" role="button" id="shareMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-share-alt"></i>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shareMenu">
+                  <div class="footer-card">
+                     <div class="sotial-links">
+                         <script src="https://yastatic.net/share2/share.js"></script>
+                         <div class="ya-share2" data-curtain data-size="s" data-shape="round" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>
+                     </div>
+                     <a class="copy-link">
+                        Копировать ссылку
+                     </a>
+                  </div>
+                </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<section class="property-card-page">
+   <div class="container">
+      <h1 class="h1 page-title">{{ item.name }}</h1>
+      <div class="row">
+         <div class="col-lg-8">
+            {% partial 'property/card/gallery-slider/gallery-slider' slider=item.slider %}
+            <div class="property-info">
+                {% for property in item.lead_properties %}
+                <div class="info-item">
+                    <div class="item-title">{{ property.property_value }}</div>
+                    <div class="item-category">{{ property.property }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="page-nav">
+               <ul class="list">
+                   {% if item.description %}
+                  <li class="list-item">
+                     <a class="list-link" href="#description">Описание</a>
+                  </li>
+                   {% endif %}
+                   {% if item.common_properties %}
+                  <li class="list-item">
+                     <a class="list-link" href="#information">Общая информация</a>
+                  </li>
+                   {% endif %}
+                   {% if item.house_properties %}
+                  <li class="list-item">
+                     <a class="list-link" href="#about-home">О доме</a>
+                  </li>
+                   {% endif %}
+                  <li class="list-item">
+                     <a class="list-link" href="#yandex-map">На карте</a>
+                  </li>
+                  <li class="list-item">
+                     <a class="list-link" href="#similar-properties">Похожие объекты</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="right-section">
+               <div class="property-card-wrap">
+                  <div class="header-card">
+                     <div>
+                        <div class="property-price">{{ item.price|number_format(0, '.', ' ') }} <span class="rub">₽</span></div>
+                        {% if item.price_per_square %}
+                            <span class="second-price">{{ item.price_per_square|number_format(0, '.', ' ') }} за кв. м.</span>
+                        {% else %}
+                            <span class="second-price">в месяц</span>
+                        {% endif %}
+                     </div>
+                     {% partial 'element/btn-like/btn-like' itemID=item.id %}
+                  </div>
+                  <div class="body-card">
+                     <div class="body-item property-address">
+                        <img class="img-fluid icon" src="{{ 'assets/images/svg/mark-icon.svg'|theme }}" alt="Адрес">
+                        {{ item.address }}
+                     </div>
+                     {% if item.mkad_address %}
+                     <div class="body-item property-metro-station">
+                        <img class="img-fluid icon" src="{{ 'assets/images/svg/person-icon.svg'|theme }}" alt="Станция метро">
+                        {{ item.mkad_address }}
+                     </div>
+                     {% endif %}
+                     {% if item.metro %}
+                         {% for elem in item.metro %}
+                             <div class="body-item property-metro-station">
+                                 <img class="img-fluid icon icon-metro" src="{{ 'assets/images/metro.png'|theme }}" alt="Станция метро">
+                                 <span class="metro-name">{{ elem.name }}</span><span class="time-to-metro"> • {{ elem.time }}<span>
+                             </div>
+                         {% endfor %}
+                     {% endif %}
+                     <div class="body-item property-specifications">
+                        <img class="img-fluid icon" src="{{ 'assets/images/svg/eye-icon.svg'|theme }}" alt="Этаж, комнаты">
+                         {% if item.floor %}<span class="specifications">{{ item.floor }} этаж</span>{% endif %}
+                         {% if item.area_size %}<span class="specifications">{{ item.area_size }} м</span>{% endif %}
+                         {% if item.rooms %}<span class="specifications">{{ item.rooms }} комнат(ы)</span>{% endif %}
+                     </div>
+                  </div>
+                  <div class="footer-card">
+                      <div class="ya-share2" data-curtain data-shape="round" data-color-scheme="blackwhite" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>
+                     <a class="footer-card-link copy-link" href="javascript:(print());">
+                        <img src="{{ 'assets/images/svg/print-icon.svg'|theme }}" alt="Печать страницы">
+                     </a>
+                     <a class="footer-card-link text-link copy-link" data-container="body" data-toggle="popover" data-placement="top" data-content="Скопировано">
+                        Копировать ссылку
+                     </a>
+                  </div>
+               </div>
+               <div class="property-card-feedback">
+                  <form data-request="consultationForm::onFormSubmit">
+                      {{ form_token() }}
+                     <div class="title">
+                        Получить консультацию по объекту
+                     </div>
+                     <div class="form-group">
+                        <label for="feedback-username">ФИО:</label>
+                        <input class="form-control" type="text" id="feedback-username" name="feedback-username" placeholder="Иван Александрович" required>
+                     </div>
+                     <div class="form-group">
+                        <label for="feedback-phone">Телефон:</label>
+                        <input class="form-control" type="text" id="feedback-phone" name="feedback-phone" data-phone="true" placeholder="+7 555 555 55 55" required>
+                     </div>
+                     <button class="btn btn-blue btn-submit" type="submit">
+                        Заказать звонок
+                        <i class="fas fa-phone-alt"></i>
+                     </button>
+                      <div id="consultationForm_forms_flash" class="mt-3"></div>
+                  </form>
+               </div>
+                {% if this.theme.consult.name %}
+               <div class="property-consultant">
+                  <div class="title">Вас проконсультирует</div>
+                  <div class="consultant-card">
+                     <img class="img-fluid consultant-avatar" src="{{ this.theme.consult.photo|media }}" alt="Елена">
+                     <div class="consultant-profile">
+                        <div class="consultant-name">{{ this.theme.consult.name }}</div>
+                         {% if this.theme.consult.position %}
+                        <div class="consultant-role">{{ this.theme.consult.position }}</div>
+                         {% endif %}
+                         {% if this.theme.consult.phone %}
+                        <a class="consultant-phone" href="tel:{{ this.theme.consult.phone }}">
+                           <i class="fas fa-phone-alt"></i>
+                            {{ this.theme.consult.phone }}
+                        </a>
+                         {% endif %}
+                         {% if this.theme.consult.email %}
+                        <a class="consultant-email" href="mailto:{{ this.theme.consult.email }}">
+                           <i class="fas fa-envelope"></i>
+                            {{ this.theme.consult.email }}
+                        </a>
+                         {% endif %}
+                     </div>
+                  </div>
+               </div>
+                {% endif %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% if item.description %}
+<section id="description" class="property-description">
+   <div class="container">
+      <h2 class="h1">Описание</h2>
+      <div class="fr-view">
+          {{ item.description|raw }}
+      </div>
+   </div>
+</section>
+{% endif %}
+{% if item.common_properties or item.house_properties %}
+<section class="property-information">
+   <div class="container">
+       {% if item.common_properties %}
+      <div id="information">
+         <h2 class="h1">Общая информация</h2>
+         <div class="row">
+             {% for property in item.common_properties %}
+               <div class="col-lg-4">
+                  <div class="info-wrap">
+                     <span class="info-type">{{ property.property }}</span>
+                     <span class="info">{{ property.property_value }}</span>
+                  </div>
+               </div>
+            {% endfor %}
+         </div>
+      </div>
+       {% endif %}
+       {% if item.house_properties %}
+      <div id="about-home">
+         <h2 class="h1">О доме</h2>
+         <div class="row">
+             {% for property in item.house_properties %}
+                 <div class="col-lg-4">
+                     <div class="info-wrap">
+                         <span class="info-type">{{ property.property }}</span>
+                         <span class="info">{{ property.property_value }}</span>
+                     </div>
+                 </div>
+             {% endfor %}
+         </div>
+      </div>
+       {% endif %}
+   </div>
+</section>
+{% endif %}
+<section class="yandex-map">
+   <div class="container">
+      <div id="yandex-map"></div>
+   </div>
+</section>
+<section id="similar-properties">
+   <div class="container">
+      <h2 class="h1">Похожие объекты</h2>
+      <div class="row">
+         {% for item in similars %}
+            {% partial 'apartament/card/card' item=item %}
+         {% endfor %}
+      </div>
+   </div>
+</section>

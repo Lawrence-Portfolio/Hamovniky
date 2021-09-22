@@ -1,0 +1,116 @@
+@import '../build/scss/color.scss';
+@import '../partials/services/card/card.scss';
+@import '../partials/apartament/card/card.scss';
+@import '../partials/article/card/card.scss';
+@import '../partials/slider/hero/hero.scss';
+
+.h1 {
+   padding: 60px 0;
+   text-align: center;
+}
+
+#about-us {
+   background-color: $second_color_grey;
+   padding-bottom: 70px;
+   .about-img {
+      box-shadow: 4px 3px 20px 15px rgba(201, 200, 201, 0.27);
+   }
+   .description-wrap {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .description:last-child {
+         font-weight: 700;
+         margin-bottom: 0;
+      } 
+   }
+}
+#services {
+   padding-bottom: 40px;
+   position: relative;
+   &::after, &::before {
+      content: '';
+      position: absolute;
+      height: 60px;
+      width: 240px;
+      background-color: $second_color_grey;
+   }
+   &::after {
+      top: 0;
+      right: -30px;
+      transform: skewX(45deg);
+   }
+   &::before {
+      top: 0;
+      left: -30px;
+      transform: skewX(-45deg);
+   }
+}
+
+#apartments-for-sale {
+   position: relative;
+   padding-bottom: 70px;
+   background-color: $second_color_grey;
+   &::after, &::before {
+      content: '';
+      position: absolute;
+      height: 60px;
+      width: 240px;
+      background-color: #fff;
+   }
+   &::after {
+      bottom: 0;
+      right: -30px;
+      transform: skewX(-45deg);
+   }
+   &::before {
+      bottom: 0;
+      left: -30px;
+      transform: skewX(45deg);
+   }
+}
+
+#useful-articles {
+   .h1 {
+      font-weight: 500;
+   }
+   .btn-wrap {
+      margin-top: 50px;
+   }
+   .btn-blue {
+      padding: 20px 0;
+      background-color: $btn_blue_hover;
+      &:hover {
+         background-color: $btn_blue;
+      }
+   }
+}
+@media(max-width: 991px) {
+   #services, #apartments-for-sale  {
+      &::after, &::before {
+         display: none;
+      }
+   }
+   #about-us .left-section {
+      margin-bottom: 30px;
+   }
+}
+
+
+@media(max-width: 767px) {
+   #about-us {
+      padding-bottom: 40px;
+   }
+   #services, #apartments-for-sale {
+      padding-bottom: 20px;
+   }
+   #useful-articles .btn-wrap {
+      margin-top: 15px;
+   }
+   .h1 {
+      padding: 30px 0;
+   }
+}
+
+

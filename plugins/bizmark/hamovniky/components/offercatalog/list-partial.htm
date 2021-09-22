@@ -1,0 +1,6 @@
+<div class="row">
+    {% for item in offers %}
+        {% partial 'apartament/card/card' item=item %}
+    {% endfor %}
+</div>
+{% partial 'element/pagination/pagination' results=offers %}

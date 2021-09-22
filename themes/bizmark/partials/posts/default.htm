@@ -1,0 +1,19 @@
+{% for post in Posts %}
+    <div class="col-lg-3 col-md-6 col-card">
+        <a class="card-link" href="{{ 'articles/card'|page({slug:post.slug}) }}">
+            <div class="card article-card">
+                <img class="card-img-top" src="{{ post.featured_images[0].path }}" alt="Пост">
+                <div class="card-content">
+                    <span class="article-name">{{ post.title }}</span>
+                    <span class="article-date">{{ post.published_at | date('d.m.Y')}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% if pagination %}
+    <div class="col-12">
+        {% partial 'element/pagination/pagination' results=posts %}
+    </div>
+{% endif %}

@@ -1,0 +1,9 @@
+fields:
+    title:
+        label: Заголовок
+        span: full
+
+    description:
+        label: Описание
+        type: richeditor
+        span: full

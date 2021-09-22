@@ -1,0 +1,40 @@
+.services-card {
+   margin-bottom: 30px;
+   position: relative;
+   .services-name-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $btn_blue;
+      text-align: center;
+      padding: 23px 0;
+      transition: all .2s ease-in-out;
+   }
+   .services-name {
+      position: relative;
+      font-size: 18px;
+      color: #fff;
+      &::before {
+         content: '\f105';
+         position: absolute;
+         left: -20px;
+         top: calc(50% - 11px);
+         font-family: "Font Awesome 5 Pro";
+         transition: all .2s ease-in-out;
+         font-size: 22px;
+         font-weight: 100;
+         line-height: 1;
+      }
+   }
+}
+.services-card-link:hover {
+   .services-card {
+      .services-name-wrap {
+         background-color: $btn_blue_hover;
+      }
+      .services-name::before {
+         left: -15px;
+      }
+   }
+}

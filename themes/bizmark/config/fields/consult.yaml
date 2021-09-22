@@ -1,0 +1,26 @@
+fields:
+    name:
+        label: Имя консультанта
+        span: left
+
+    position:
+        label: Должность
+        span: right
+
+    phone:
+        label: Телефон
+        span: left
+
+    email:
+        label: E-mail
+        span: right
+
+    description:
+        label: Описание (в карточке статьи)
+        type: textarea
+        span: full
+
+    photo:
+        label: Изображение (рекомендуется 70 x 70)
+        span: full
+        type: mediafinder

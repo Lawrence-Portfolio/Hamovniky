@@ -1,0 +1,82 @@
+.apartament-card {
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.apartament-card .img-wrap {
+  position: relative;
+}
+.apartament-card .img-wrap .address-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.apartament-card .img-wrap .address-wrap .address, .apartament-card .img-wrap .address-wrap .btn-like {
+  padding: 10px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 8px;
+  line-height: 1.2;
+  font-size: 14px;
+}
+.apartament-card .img-wrap .address-wrap .address {
+  padding: 10px 20px 10px 30px;
+  margin: 0 15px 8px;
+  min-width: 190px;
+  min-height: 36px;
+}
+.apartament-card .img-wrap .address-wrap .address::before {
+  color: #151963;
+  left: 12px;
+  font-size: 12px;
+}
+.apartament-card .img-wrap .address-wrap .btn-like {
+  box-shadow: none;
+  margin: 0 15px 20px 0;
+  width: 36px;
+  height: 36px;
+  color: #C9C8C9;
+}
+.apartament-card .img-wrap .address-wrap .btn-like.active {
+  color: #151963;
+}
+.apartament-card .card-content {
+  padding: 20px 15px;
+}
+.apartament-card .card-content span {
+  display: block;
+}
+.apartament-card .card-content .name {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+.apartament-card .card-content .price {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.apartament-card .card-content .card-list {
+  display: flex;
+}
+.apartament-card .card-content .card-list .list-item {
+  position: relative;
+  color: #4A4A4A;
+  padding-right: 20px;
+  font-weight: 300;
+}
+.apartament-card .card-content .card-list .list-item::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  right: 10px;
+  width: 1px;
+  background-color: #000;
+}
+.apartament-card .card-content .card-list .list-item:last-child::before {
+  display: none;
+}

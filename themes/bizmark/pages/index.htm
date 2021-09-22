@@ -1,0 +1,87 @@
+title = "Главная страница"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[OfferCatalog]
+mode = "All"
+items = 9
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 4
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "articles/listing"
+postPage = "articles/card"
+==
+<?php
+function onStart() {
+   $this['path_page_js'] = mix('js/index.js', 'themes/bizmark/assets');
+   $this['path_page_css'] = mix('css/index.css', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+   <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put page_script %}
+   <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+<section id="hero">
+   {% partial 'slider/hero/hero' %}
+</section>
+
+<section id="about-us">
+   <div class="container">
+      {% if this.theme.main.info.h1 %}<h1 class="h1 h1-section">{{ this.theme.main.info.h1 }}</h1>{% endif %}
+      <div class="row">
+         <div class="col-lg-5 left-section">
+            <img class="img-fluid about-img" src="{{ this.theme.main.info.image|media }}" alt="{{ this.theme.main.info.h1 }}">
+         </div>
+         <div class="col-lg-7 right-section">
+            <div class="description-wrap fr-view">
+                {% if this.theme.main.info.description %}
+                    {{ this.theme.main.info.description|raw }}
+                {% endif %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section id="services">
+   <div class="container">
+      <h2 class="h1  h1-section">
+         Услуги агенства
+      </h2>
+      <div class="row">
+        {% for item in ServiceCatalog.services %}
+            {% partial 'services/card/card' item=item %}
+        {% endfor %}
+      </div>
+   </div>
+</section>
+<section id="apartments-for-sale">
+   <div class="container">
+      <h2 class="h1  h1-section">
+         Новые квартиры на продажу в Хамовниках
+      </h2>
+      <div class="row">
+         {% for item in OfferCatalog.offers %}
+            {% partial 'apartament/card/card' item=item %}
+         {% endfor %}
+      </div>
+   </div>
+</section>
+<section id="useful-articles">
+   <div class="container">
+      <h2 class="h1">Полезные статьи</h2>
+      <div class="row justify-content-center">
+         {% partial 'posts/default' Posts=blogPosts.posts %}
+         <div class="col-lg-4 col-md-6 btn-wrap">
+            <a href="{{ 'articles/listing'|page }}" class="btn btn-blue btn-block">Все статьи</a>
+         </div>
+      </div>
+   </div>
+</section>

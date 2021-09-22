@@ -1,0 +1,151 @@
+@import '../../build/scss/color.scss';
+
+@import '../../partials/feedback-form/feedback-form.scss';
+
+.description.medium {
+   font-size: 18px;
+   margin-bottom: 30px;
+}
+.description.light {
+   font-size: 15px;
+}
+#about-us {
+   padding-bottom: 30px;
+}
+
+#benefits, #our-team {
+   .h1 {
+      margin-bottom: 70px;
+   }
+}
+#benefits {
+   padding-top: 50px;
+   .benefits-col {
+      margin-bottom: 50px;
+   }
+   .benefits-wrap {
+      display: flex;
+   }
+   .img-wrap {
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 138px;
+      height: 138px;
+      background-color: $main_color_blue;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 4px;
+   }
+   .benefits-content {
+      margin-left: 40px;
+      .headline {
+         font-size: 24px;
+         margin-bottom: 20px;
+      }
+      .description {
+         font-size: 18px;
+         color: #4A4A4A;
+         font-weight: 400;
+      }
+   }
+}
+#our-team {
+   .employee-col {
+      margin-bottom: 30px;
+      &:last-child {
+         margin-bottom: 0;
+      }
+   }
+   .employee-wrap {
+      text-align: center;
+      .employee-photo {
+         margin-bottom: 40px;
+      }
+      .employee-name, .employee-position {
+         display: block;
+      }
+      .employee-name {
+         font-size: 18px;
+         margin-bottom: 15px;
+      }
+      .employee-position {
+         font-size: 14px;
+         color: #4A4A4A;
+      }
+   }
+}
+
+@media(max-width: 1199px) {
+   #our-team .employee-wrap {
+      .employee-name {
+         margin-bottom: 5px;
+      }
+      .employee-photo {
+         margin-bottom: 20px;
+      }
+   }
+}
+
+@media(max-width: 991px) {
+   #benefits .h1, #our-team .h1 {
+      margin-bottom: 50px;
+   }
+}
+
+@media(max-width: 767px) {
+   #benefits .h1, #our-team .h1 {
+      margin-bottom: 30px;
+   }
+   .description.medium {
+      font-size: 15px;
+      margin-bottom: 20px;
+   }
+   #benefits {
+      padding-top: 30px;
+      .benefits-col {
+         margin-bottom: 30px;
+      }
+      .img-wrap {
+         min-width: 100px;
+         height: 100px;
+      }
+      .benefits-content {
+         margin-left: 20px;
+         .headline {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .description {
+           font-size: 16px;
+        }
+      }
+   }
+}
+
+@media(max-width: 575px) {
+   #benefits {
+      .benefits-content {
+         .headline {
+            font-size: 18px;
+         }
+         .description {
+            font-size: 14px;
+         }
+      }
+   }
+   #our-team .h1 {
+      text-align: center;
+   }
+}
+
+@media(max-width: 420px) {
+   #benefits {
+      .img-wrap {
+         padding: 10px;
+         min-width: 60px;
+         height: 60px;
+      }
+   }
+}
+
